@@ -1,10 +1,3 @@
-containers
-devicemapper
-graph
-init
-linkgraph.db
-repositories-devicemapper
-tmp
-trust
-volumes
-
+*
+!README.md
+!.gitignore
