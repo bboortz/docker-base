@@ -1,0 +1,11 @@
+#!/bin/sh
+
+xhost + /dev/null
+
+mkdir -p /tmp/workspace 
+
+docker run -ti --rm \
+       -e DISPLAY=$DISPLAY \
+       -v /tmp/.X11-unix:/tmp/.X11-unix \
+       -v /tmp/workspace:/workspace \
+       sailfish_sdk

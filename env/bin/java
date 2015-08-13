@@ -1,0 +1,4 @@
+#!/bin/sh
+
+docker run -ti --rm \
+       mw_java $@
