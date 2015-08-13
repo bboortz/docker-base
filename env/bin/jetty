@@ -1,0 +1,13 @@
+#!/bin/sh
+
+. ${0%/*}/../tools/lib.bash
+
+CONTAINER_MOUNTPOINT="${DOCKER_MOUNTPOINTS_PATH}/jetty/webapps"
+mkdir -p ${CONTAINER_MOUNTPOINT}
+
+xhost + > /dev/null
+
+docker run -ti --rm \
+	-p 8080:8080 \
+	-v ${CONTAINER_MOUNTPOINT}:/appl/jetty_base/webapps \
+	jetty

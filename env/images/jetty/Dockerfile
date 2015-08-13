@@ -16,8 +16,16 @@ USER $USER
 WORKDIR $JETTY_HOME
 RUN curl -SL "$JETTY_TGZ_URL" -o jetty.tar.gz && \
 	tar -xzf jetty.tar.gz --strip-components=1 && \
+	sed -i '/jetty-logging/d' etc/jetty.conf && \
 	rm jetty.tar.gz 
 
 WORKDIR $JETTY_BASE
-ENTRYPOINT [ "$JETTY_HOME/bin/jetty.sh" ]
+
+# setup directory $JETTY_BASE
+RUN modules="$(grep -- ^--module= "$JETTY_HOME/start.ini" | cut -d= -f2 | paste -d, -s)" \
+	&& set -xe \
+	&& java -jar "$JETTY_HOME/start.jar" --add-to-startd="$modules,setuid"
+
+#ENTRYPOINT [ "$JETTY_HOME/bin/jetty.sh" ]
+ENTRYPOINT [ "/appl/jetty/bin/jetty.sh" ]
 CMD [ "run" ]
