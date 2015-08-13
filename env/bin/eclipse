@@ -1,11 +1,14 @@
 #!/bin/sh
 
-xhost + > /dev/null
+. ${0%/*}/../tools/lib.bash
 
-mkdir -p /tmp/workspace
+CONTAINER_MOUNTPOINT="${DOCKER_MOUNTPOINTS_PATH}/eclipse/workspace"
+mkdir -p ${CONTAINER_MOUNTPOINT}
+
+xhost + > /dev/null
 
 docker run -ti --rm \
        -e DISPLAY=$DISPLAY \
        -v /tmp/.X11-unix:/tmp/.X11-unix \
-       -v /tmp/workspace:/workspace \
+       -v ${CONTAINER_MOUNTPOINT}:/home/eclipse/workspace \
        eclipse
