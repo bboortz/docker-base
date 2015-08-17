@@ -1,3 +1,0 @@
-[submodule "os_archlinux_build"]
-	path = os_archlinux_build
-	url = https://github.com/bboortz/docker-archlinux
