@@ -1,0 +1,3 @@
+[submodule "env/images/docker-archlinux-build"]
+	path = env/images/docker-archlinux-build
+	url = https://github.com/bboortz/docker-archlinux-build
