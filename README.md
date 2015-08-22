@@ -9,8 +9,8 @@ This is a base repo for my work with docker. Here you can find:
 # Setup
 
 * install docker and git
-** arch linux: pacman -S docker git
-** debian: apt-get install docker git
+ ** arch linux: pacman -S docker git
+ ** debian: apt-get install docker git
 * git clone https://github.com/bboortz/docker-base.git
 * configure your docker service
 ** systemd users
