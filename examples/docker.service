@@ -5,7 +5,7 @@ After=network.target docker.socket
 Requires=docker.socket
 
 [Service]
-ExecStart=/usr/bin/docker -d -H fd:// --exec-root /appl/docker/runtime/run -g /appl/docker_runtime/lib -p /appl/docker/runtime/run/docker.pid
+ExecStart=/usr/bin/docker -d -H fd:// --exec-root /appl/docker/runtime/run -g /appl/docker/runtime/lib -p /appl/docker/runtime/run/docker.pid
 MountFlags=slave
 LimitNOFILE=1048576
 LimitNPROC=1048576
