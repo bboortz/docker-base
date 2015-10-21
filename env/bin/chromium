@@ -1,0 +1,23 @@
+#!/bin/bash
+
+. ${0%/*}/../../env_private/tools/lib.bash
+
+USER=user_chromium
+
+xhost + > /dev/null
+
+docker run \
+       -it --rm \
+       -e DISPLAY=$DISPLAY \
+       -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+       -v $HOME/.Xauthority:/home/${USER}/.Xauthority:ro \
+	-v /dev/snd:/dev/snd \
+       --name chromium \
+       chromium
+
+#       --device /dev/snd \
+
+
+
+
+
