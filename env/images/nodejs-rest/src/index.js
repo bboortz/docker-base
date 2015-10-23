@@ -7,15 +7,17 @@
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
-var timeout = require('connect-timeout'); //express v4
 
 // configure timeout
+/*
+var timeout = require('connect-timeout'); //express v4
 app.use(timeout(10000));
 app.use(haltOnTimedout);
 
 function haltOnTimedout(req, res, next){
   if (!req.timedout) next();
 }
+*/
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST

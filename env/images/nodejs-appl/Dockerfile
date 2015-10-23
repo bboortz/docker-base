@@ -1,13 +1,11 @@
-FROM centos_base
+FROM nodejs_base
 
 ENV USER user_nodejs
 ENV HOME /home/$USER
 ENV WORKDIR /src
 
-RUN useradd -m $USER
-RUN curl --silent --location https://rpm.nodesource.com/setup | bash - && \
-	yum -y install nodejs npm gcc-c++ make && \
-	mkdir -p $WORKDIR
+RUN useradd -m $USER && \
+	mkdir -p  $WORKDIR
 
 COPY ./src $WORKDIR
 WORKDIR $WORKDIR
