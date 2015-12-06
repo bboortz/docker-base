@@ -13,6 +13,7 @@ var request = require('request')
 
 function fetch(feed) {
   // Define our streams
+ //  var req = request("url": feed, "rejectUnauthorized": false, {timeout: 10000, pool: false});
   var req = request(feed, {timeout: 10000, pool: false});
   req.setMaxListeners(50);
   // Some feeds do not respond without user-agent and accept headers.
@@ -87,8 +88,8 @@ var server = require('http').createServer(function (req, res) {
   stream.pipe(res);
 });
 server.listen(0, function () {
-  fetch('http://www.spiegel.de/schlagzeilen/tops/index.rss');
-  // fetch('https://blog.fefe.de/rss.xml');
+  //fetch('http://www.spiegel.de/schlagzeilen/tops/index.rss');
+  fetch('https://blog.fefe.de/rss.xml');
   // fetch('http://localhost:' + this.address().port + '/iconv.xml');
 });
 
