@@ -88,8 +88,8 @@ var server = require('http').createServer(function (req, res) {
   stream.pipe(res);
 });
 server.listen(0, function () {
-  //fetch('http://www.spiegel.de/schlagzeilen/tops/index.rss');
-  fetch('https://blog.fefe.de/rss.xml');
+  fetch('http://www.spiegel.de/schlagzeilen/tops/index.rss');
+  //fetch('https://blog.fefe.de/rss.xml');
   // fetch('http://localhost:' + this.address().port + '/iconv.xml');
 });
 
