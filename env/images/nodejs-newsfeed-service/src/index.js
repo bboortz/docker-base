@@ -14,7 +14,7 @@ var port = process.env.PORT || 8080;        // set our port
 
 
 
-/*** mongodb ***/
+/*** mongodb setup ***/
 var mongoose = require('mongoose');		// 
 var uriUtil = require('mongodb-uri');
 
