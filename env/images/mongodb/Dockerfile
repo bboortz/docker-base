@@ -24,12 +24,13 @@ RUN tar -zxf ${MONGODB_PATH}.tgz -C $WORKDIR && \
 
 # expose a port
 EXPOSE 27017
+EXPOSE 28017
 
 
 # run the application
 USER $USER
 WORKDIR $WORKDIR
 #ENTRYPOINT ["${MONGODB_PATH}/bin/mongod", "--dbpath", "/appl/data/"]
-ENTRYPOINT ["/appl/mongodb-linux-x86_64-rhel70-3.0.4/bin/mongod", "--dbpath", "/appl/data/"]
+ENTRYPOINT ["/appl/mongodb-linux-x86_64-rhel70-3.0.4/bin/mongod", "--dbpath", "/appl/data/", "--rest" ]
 
 
