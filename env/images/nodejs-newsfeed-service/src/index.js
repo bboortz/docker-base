@@ -26,7 +26,7 @@ function mongoErrHandler() {
 // mongoose connection setup 
 var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 3000 } }, 
                 replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 3000 } } };       
-var mongodbUri = 'mongodb://mongodb:27017/newsfeed';
+var mongodbUri = 'mongodb://mongodb:27017/feed';
 var mongooseUri = uriUtil.formatMongoose(mongodbUri);
 
 mongoose.connection.on('error', mongoErrHandler);
@@ -35,7 +35,7 @@ var conn = mongoose.connection;
 
 conn.on('error', mongoErrHandler);
 conn.once('open', function() {
-	console.log("mongodb connection established."
+	console.log("mongodb connection established.");
 });
 
 
@@ -51,7 +51,7 @@ var router = express.Router();              // get an instance of the express Ro
 // middleware to use for all requests
 router.use(function(req, res, next) {
     // do logging
-    console.log('Something is happening.');
+    console.log('someone is using the api.');
     next(); // make sure we go to the next routes and don't stop here
 });
 
@@ -60,10 +60,10 @@ router.get('/', function(req, res) {
     res.json({ message: 'this is the newsfeed api' });   
 });
 
-// on routes that end in /feeds
-router.route('/feeds')
+// on routes that end in /feed
+router.route('/feed')
 
-    // create a feed (accessed at POST http://localhost:8080/api/feeds)
+    // create a feed (accessed at POST http://localhost:8080/api/feed)
     .post(function(req, res) {
         
         var feed = new Feed();      // create a new instance of the Feed model
@@ -80,7 +80,7 @@ router.route('/feeds')
         
     })
 
-	// get all the feeds (accessed at GET http://localhost:8080/api/feeds)
+	// get all the feeds (accessed at GET http://localhost:8080/api/feed)
 	.get(function(req, res) {
 		Feed.find(function(err, feeds) {
 			if (err) {
@@ -92,10 +92,10 @@ router.route('/feeds')
 	});
 
 
-// on routes that end in /feeds/:feed_id
-router.route('/feeds/:feed_id')
+// on routes that end in /feed/:feed_id
+router.route('/feed/:feed_id')
 
-	// get the feed with that id (accessed at GET http://localhost:8080/api/feeds/:feed_id)
+	// get the feed with that id (accessed at GET http://localhost:8080/api/feed/:feed_id)
 		.get(function(req, res) {
 			Feed.findById(req.params.feed_id, function(err, feed) {
 			if (err) {
