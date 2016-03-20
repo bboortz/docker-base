@@ -14,6 +14,7 @@ usermod -a -G user_ssh benni
 usermod -a -G benni user_ssh
 
 # set ssh settings
+mkdir -p /home/$CREATE_USER/jail
 mkdir -p /home/$CREATE_USER/.ssh /home/$CREATE_USER/.sshd
 #cp /home/$USER_SSH/.ssh/ssh_host_rsa_key /home/$USER_SSH/.ssh/ssh_host_dsa_key /home/$USER_SSH/.ssh/ssh_host_ecdsa_key /home/$USER_SSH/.ssh/ssh_host_ed25519_key /home/$USER_SSH/.ssh/sshd_config /home/$CREATE_USER/.ssh/
 echo "$CREATE_KEY" > /home/$CREATE_USER/.ssh/authorized_keys

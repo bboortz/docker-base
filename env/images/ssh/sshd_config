@@ -20,8 +20,8 @@ KeyRegenerationInterval 3600
 ServerKeyBits 4096
 
 # Logging
-#SyslogFacility AUTH
-SyslogFacility DAEMON
+SyslogFacility AUTH
+#SyslogFacility DAEMON
 LogLevel DEBUG
 
 # Authentication:
@@ -89,3 +89,7 @@ AcceptEnv LANG LC_*
 UsePAM yes
 
 PidFile ~/.sshd/sshd.pid
+
+ChrootDirectory ~/jail/
+X11Forwarding no
+AllowTcpForwarding no

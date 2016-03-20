@@ -140,14 +140,17 @@ var options = {
 }
 
 request(options, function (error, response, body) {
+	console.log("error: " + error);
 	if (!error && response.statusCode === 200) {
 		count = Object.keys(body).length
 		body.forEach(function(obj) { 
 			console.log("fetch: " + obj.url); 
 			fetch(obj.name, obj.url); 
 		});
-	} else {
+	} else if (!error && response.statusCode != 200) {
 		console.log("ERROR - on feed url <" + feedServiceUrl + "> with http status code: " + response.statusCode);
+	} else {
+		console.log("ERROR - on feed url <" + feedServiceUrl + "> with error: " + error);
 	}
 })
 
