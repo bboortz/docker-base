@@ -30,6 +30,7 @@ RUN chown -R $USER:$GROUP /opt
 
 #USER $USER
 
-
+EXPOSE 8080
+EXPOSE 8443
 ENTRYPOINT [ "/opt/www/bin/nginx", "-p", "/opt/www-run", "-g", "daemon off;", "-c", "/opt/www/conf/nginx.conf"]
 
